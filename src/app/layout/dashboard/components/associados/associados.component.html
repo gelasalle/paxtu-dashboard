@@ -1,0 +1,108 @@
+<div>
+    <mat-form-field>
+        <input matInput (keyup)="filtrarTabela($event.target.value)" placeholder="Search">
+    </mat-form-field>
+    
+    <!-- <button (click)="handleClick($event)" type="button">Button</button> -->
+    
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && todosSelecionados()"
+                        [indeterminate]="selection.hasValue() && !todosSelecionados()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!--Coluna Número de Registro-->
+      <ng-container matColumnDef="nr_registro_formatado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>REGISTRO</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.nr_registro_formatado}} </td>
+      </ng-container>
+
+      <!-- Colune Nome-->
+      <ng-container matColumnDef="nm_associado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>NOME</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.nm_associado}} </td>
+      </ng-container>
+
+      <!-- Coluna Atividade 1 -->
+      <ng-container matColumnDef="p1">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P1</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P1}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 2 -->
+      <ng-container matColumnDef="p2">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P2</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P2}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 3 -->
+      <ng-container matColumnDef="p3">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P3</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P3}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 4 -->
+      <ng-container matColumnDef="p4">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P4</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P4}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 5 -->
+      <ng-container matColumnDef="p5">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P5</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P5}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 6 -->
+      <ng-container matColumnDef="p6">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P6</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P6}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 7 -->
+      <ng-container matColumnDef="p7">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P7</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P7}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 8 -->
+      <ng-container matColumnDef="p8">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P8</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P8}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 9 -->
+      <ng-container matColumnDef="p9">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P9</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P9}} </td>
+      </ng-container>
+        
+      <!-- Coluna Atividade 10 -->
+      <ng-container matColumnDef="p10">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>P10</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.P10}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="selection.toggle(row)">
+      </tr>
+
+    </table>
+  <mat-paginator [pageSizeOptions]="[10]" [hidePageSize]="true" showFirstLastButtons></mat-paginator>
+</div>
+
