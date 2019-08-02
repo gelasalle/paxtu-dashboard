@@ -26,9 +26,9 @@ export interface Associados {
 
 export class AssociadosComponent implements OnInit {
     
-    @ViewChild(MatTable) table: MatTable<any>;
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatTable, {static: false}) table: MatTable<any>;
+    @ViewChild(MatSort, {static: false}) sort: MatSort;
+    @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
     
     private associados: Associados[] = [];
     logado: any = {};
